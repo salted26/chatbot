@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>소설 챗봇</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app-container">
+        <header>
+            <div class="header-left">
+                <span class="material-icons-outlined">chevron_left</span>
+                <div class="profile">
+                    <div class="profile-img"></div>
+                    <div class="profile-info">
+                        <span class="name" style="font-weight:bold;">여준</span>
+                        <span class="handle" style="color:#3a86ff; font-size:11px; display:block;">@노르다</span>
+                    </div>
+                </div>
+            </div>
+            <div class="header-right">
+                <span class="material-icons-outlined">image</span>
+                <span class="material-icons-outlined">more_vert</span>
+            </div>
+        </header>
+
+        <main id="chat-window">
+            <div class="novel-text">
+                저녁을 먹고 나서 씻고 별채에 누워있다보니, 어느새 야심한 시각이 다가왔다.
+            </div>
+            <div id="loading-indicator" class="loading-container" style="display:none; color: gray; font-size: 13px;">
+                작가가 집필 중...
+            </div>
+        </main>
+
+        <footer>
+            <div class="input-group">
+                <span class="material-icons-outlined icon-btn">add</span>
+                <input type="text" id="user-input" placeholder="대사를 입력하세요. 예) 안녕! 뭐해?" autocomplete="off">
+                <span class="material-icons-outlined icon-btn">auto_awesome</span>
+                <button id="send-btn">
+                    <span class="material-icons-outlined">send</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+/* 1. 웹 폰트 및 초기화 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+
+:root {
+    --bg-dark: #121418;          /* 배경색 */
+    --user-gray: #9da3ae;        /* 사용자 메시지 (진한 회회색) */
+    --novel-orange: #ffcc4d;     /* API 소설 지문 (오렌지색) */
+    --dialogue-white: #ffffff;   /* API 대사 (흰색) */
+    --icon-gray: #9da3ae;        /* 액션 아이콘 (금색) */
+    --input-glass: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: var(--bg-dark);
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    color: var(--dialogue-white);
+    overflow: hidden; /* 전체 스크롤 방지 */
+}
+
+/* 2. 메인 컨테이너 레이아웃 */
+#app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh; /* 모바일 대응 */
+    width: 100%;
+    max-width: 600px; /* 모바일 앱 형태 유지 */
+    margin: 0 auto;
+    position: relative;
+}
+
+/* 3. 헤더 디자인 */
+header {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    z-index: 10;
+}
+
+.header-left { display: flex; align-items: center; gap: 10px; }
+.profile { display: flex; align-items: center; gap: 10px; }
+.profile-img { 
+    width: 36px; height: 36px; 
+    border-radius: 50%; 
+    background: #333; 
+}
+.name { font-size: 15px; font-weight: 700; color: #fff; }
+.handle { font-size: 11px; color: #3a86ff; font-weight: 600; }
+
+/* 4. 채팅창 및 [반응형 스크롤바] */
+#chat-window {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* 스크롤바 디자인 (이미지 재현) */
+#chat-window::-webkit-scrollbar {
+    width: 4px; /* 매우 얇은 디자인 */
+}
+
+#chat-window::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#chat-window::-webkit-scrollbar-thumb {
+    background: rgba(157, 163, 174, 0.1); /* 평소엔 거의 안 보임 */
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+#chat-window:hover::-webkit-scrollbar-thumb {
+    background: rgba(157, 163, 174, 0.4); /* 마우스 올리면 강조 */
+}
+
+/* 5. 메시지 스타일 */
+
+/* 사용자: 회회색 + 우측 정렬 */
+.user-msg {
+    color: var(--user-gray);
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: right;
+    align-self: flex-start;
+    max-width: 80%;
+    margin-bottom: -10px; /* 아이콘 바와 간격 조절 */
+}
+
+/* API 지문: 오렌지색 + 이탤릭 */
+.novel-text {
+    color: var(--novel-orange);
+    font-size: 15px;
+    line-height: 1.8;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* API 대사: 흰색 */
+.dialogue {
+    color: var(--dialogue-white);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-top: 8px;
+}
+
+/* 6. 아이콘 액션 바 (금색 수정) */
+.action-bar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 18px;
+    margin-top: 14px;
+}
+
+.action-bar span {
+    font-size: 15px;
+    color: var(--icon-gray);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.2s;
+}
+
+.action-bar span:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* 7. 입력 하단 바 */
+footer {
+    flex-shrink: 0;
+    padding: 16px;
+    background: var(--bg-dark);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background-color: var(--input-glass);
+    border-radius: 28px;
+    padding: 6px 16px;
+    gap: 12px;
+}
+
+input#user-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 10px 0;
+    outline: none;
+    font-size: 15px;
+}
+
+.icon-btn {
+    color: var(--user-gray);
+    font-size: 22px;
+    cursor: pointer;
+}
+
+#send-btn {
+    background: transparent;
+    border: none;
+    color: var(--user-gray);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#send-btn.active {
+    color: var(--novel-orange); /* 글자 입력 시 활성화 색상 */
+}
+
+/* 로딩 애니메이션 */
+.loading-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--user-gray);
+    font-size: 13px;
+    font-style: italic;
+}
